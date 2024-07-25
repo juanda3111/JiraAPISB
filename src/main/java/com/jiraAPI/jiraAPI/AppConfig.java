@@ -11,8 +11,8 @@ import java.util.Collections;
 @Configuration
 public class AppConfig {
 
-    private static final String BEARER_TOKEN = "";
-    //private static final String BEARER_TOKEN = "ODE4MjQxMjE5Nzk5OkLRSI4G/fITfcAxc8celW/GEpOi";
+   
+    private static final String BEARER_TOKEN ;
 
     
     @Bean
