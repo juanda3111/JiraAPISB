@@ -6,15 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
-
 @Configuration
 public class AppConfig {
 
-   
-    private static final String BEARER_TOKEN ;
+    private static final String BEARER_TOKEN = "ODE4MjQxMjE5Nzk5OkLRSI4G/fITfcAxc8celW/GEpOi";
 
-    
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder
