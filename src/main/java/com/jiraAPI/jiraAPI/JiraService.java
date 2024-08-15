@@ -2,6 +2,7 @@ package com.jiraAPI.jiraAPI;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
@@ -15,6 +16,9 @@ public class JiraService {
 
     private final RestTemplate restTemplate;
     private static final Logger logger = LoggerFactory.getLogger(JiraService.class);
+
+    @Value("${jira.bearer.token}")
+    private String bearerToken;
 
     public JiraService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -33,7 +37,7 @@ public class JiraService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth("ODE4MjQxMjE5Nzk5OkLRSI4G/fITfcAxc8celW/GEpOi");
+        headers.setBearerAuth(bearerToken);
 
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode issueDetails = mapper.createObjectNode();

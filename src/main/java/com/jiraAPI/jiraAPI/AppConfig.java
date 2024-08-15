@@ -1,5 +1,6 @@
 package com.jiraAPI.jiraAPI;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +10,8 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class AppConfig {
 
-    private static final String BEARER_TOKEN = "ODE4MjQxMjE5Nzk5OkLRSI4G/fITfcAxc8celW/GEpOi";
+    @Value("${jira.bearer.token}")
+    private String bearerToken;
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
@@ -20,7 +22,7 @@ public class AppConfig {
 
     private ClientHttpRequestInterceptor bearerTokenInterceptor() {
         return (request, body, execution) -> {
-            request.getHeaders().setBearerAuth(BEARER_TOKEN);
+            request.getHeaders().setBearerAuth(bearerToken);
             return execution.execute(request, body);
         };
     }
